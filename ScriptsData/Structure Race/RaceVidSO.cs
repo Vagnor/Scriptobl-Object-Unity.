@@ -107,6 +107,8 @@ namespace Structure.Model
 
                         EditorGUILayout.Space(7);
                     }
+
+                EditorUtility.SetDirty(targetObject);
                 serializedObject.ApplyModifiedProperties();
             }
         }

@@ -49,7 +49,8 @@ namespace Structure.Model
 
             //index = EditorGUILayout.Popup(index, targetObject.ListVidStructuresData.Structures);
 
-            base.SaveChanges();
+            EditorUtility.SetDirty(targetObject);
+            serializedObject.ApplyModifiedProperties();
         }
     }
 #endif

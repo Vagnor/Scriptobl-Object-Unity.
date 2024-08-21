@@ -53,6 +53,7 @@ namespace Structure.Model
                         targetObject.ListPartsCharacterVidData.AddListVidPartsCharacter(targetObject);
                 }
 
+                EditorUtility.SetDirty(targetObject);
                 serializedObject.ApplyModifiedProperties();
             }
         }

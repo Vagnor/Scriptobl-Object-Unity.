@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.UIElements;
+using System;
 
 namespace Structure.Model
 {
@@ -18,9 +19,8 @@ namespace Structure.Model
         [field: SerializeField] public ListRaceSO ListRaceData { get; private set; }
         [field: SerializeField] public ListPartsCharacterVidSO ListPartsCharacterVidData { get; private set; }
 
-        [SerializeField] private int _structID, _indexListVid;
+        [SerializeField] private int _structID, _indexListVid = -1, _indexListRaces = -1;
         [SerializeField] private bool _studied;
-        [SerializeField] private string _nameObject;
 
 
         public int ID => _structID;
@@ -43,41 +43,51 @@ namespace Structure.Model
                 else
                     EditorGUILayout.LabelField("Часть персонажа", "id = " + targetObject.ID);
 
-                DrawDefaultInspector();
+                //DrawDefaultInspector();
 
-                //EditorGUILayout.PropertyField(serializedObject.FindProperty("SpriteAnimation"), new GUIContent("Иконка анимации"));
-
+                EditorGUILayout.PropertyField(serializedObject.FindProperty("_studied"), new GUIContent("Известен ли объект"));
                 EditorGUILayout.Space();
-                //targetObject.SpriteAnimation = EditorGUILayout.DoubleField("",targetObject.SpriteAnimation); // поставить справйт
 
                 targetObject._indexListVid = EditorGUILayout.Popup(targetObject._indexListVid, targetObject.ListPartsCharacterVidData.Structures);
-
                 if (targetObject._indexListVid >= 0)
                     targetObject.Vid = targetObject.ListPartsCharacterVidData.GetVidPartsCharacter(targetObject.ListPartsCharacterVidData.Structures[targetObject._indexListVid]);
 
-                if (targetObject.ID < 1000000)
-                {
-                    if (GUILayout.Button("Добавить Часть персонажа"))
-                    {
-                        targetObject.ReID();
+                targetObject._indexListRaces = EditorGUILayout.Popup(targetObject._indexListRaces, targetObject.ListRaceData.Structures);
+                if (targetObject._indexListRaces >= 0)
+                    targetObject.VidRaces = targetObject.ListRaceData.GetRace(targetObject.ListPartsCharacterVidData.Structures[targetObject._indexListVid]);
 
-                        Debug.Log("Компиляция " + targetObject.name + " прошла успешно!");
+                EditorGUILayout.Space(10);
+
+                targetObject.SpriteAnimation = (Sprite)EditorGUILayout.ObjectField("Спрайт :", targetObject.SpriteAnimation, typeof(Sprite), true);
+                targetObject.Animation = (RuntimeAnimatorController)EditorGUILayout.ObjectField("Анимация :", targetObject.Animation, typeof(RuntimeAnimatorController), true);
+
+                EditorGUILayout.Space(10);
+                if (targetObject._indexListVid >= 0 && targetObject._indexListRaces >= 0)
+                {
+                    if (targetObject.ID < 1000000)
+                    {
+                        if (GUILayout.Button("Добавить Часть персонажа"))
+                        {
+                            targetObject.ReID();
+
+                            Debug.Log("Компиляция " + targetObject.name + " прошла успешно!");
+                        }
                     }
-                }
-                else
-                {
-                    if (GUILayout.Button("Проверка Часть персонажа"))
+                    else
                     {
-                        targetObject.ReID();
+                        if (GUILayout.Button("Проверка Часть персонажа"))
+                        {
+                            targetObject.ReID();
 
-                        Debug.Log("Проверка " + targetObject.name + " прошла успешно!");
+                            Debug.Log("Проверка " + targetObject.name + " прошла успешно!");
+                        }
                     }
                 }
 
                 GetInfoString();
                 Repaint();
-                EditorGUILayout.LabelField("Название", targetObject._nameObject);
 
+                EditorUtility.SetDirty(targetObject);
                 serializedObject.ApplyModifiedProperties();
             }
         }

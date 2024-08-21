@@ -1,9 +1,8 @@
 using Inventory.Model;
+using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
-using static Structure.Model.ColorVidSO;
 
 namespace Structure.Model
 {
@@ -17,7 +16,6 @@ namespace Structure.Model
         [field: SerializeField] public ListPartsCharacterVidSO ListPartsCharacterVidData { get; private set; }
         [field: SerializeField] public ListRaceSO ListRaceData { get; private set; }
 
-
         //заполнить только одно поле
         [Header("Предмет")]
         [SerializeField] private bool _activeItem = false;
@@ -25,9 +23,8 @@ namespace Structure.Model
 
         [Header("Часть персонажа")]
         [SerializeField] private bool _activeCharacter = false;
-        [SerializeField] private PartsCharacterVidSO _partsCharacterVid;// Вид части персонажа .. обязательно добавить рассу
-        [SerializeField] private List<RaceActive> _listRace;//если добавляем вид части персонажа то надо добавит и расу
-
+        [SerializeField] private PartsCharacterVidSO _partsCharacterVid;
+        [SerializeField] public List<RaceActive> _listRace;
 
         [SerializeField] private int _indexListVid = -1;
 
@@ -110,13 +107,14 @@ namespace Structure.Model
                 }
             }
         }
-    
+
+
+        [Serializable]    
         public class RaceActive
         {
-            [field: SerializeField] public bool ActiveRaces;
-            [field: SerializeField] public RaceVidSO Race; 
+            public bool ActiveRaces;
+            public RaceVidSO Race; 
         }
-
 
 
 
@@ -130,6 +128,7 @@ namespace Structure.Model
 
                 EditorGUILayout.LabelField("Подсказка", "Отношение цвета к объекту");
 
+                //DrawDefaultInspector();
                 EditorGUILayout.Space();
 
                 targetObject.VidName = EditorGUILayout.TextField("Имя для вида", targetObject.VidName);
@@ -149,7 +148,7 @@ namespace Structure.Model
                     EditorGUILayout.PropertyField(serializedObject.FindProperty("_itemVid"));
 
 
-                    if (GUILayout.Button("Добавит цвет предмета в лист " + System.Environment.NewLine + "или проверить наличие"))
+                    if (GUILayout.Button("Добавит цвет предмета в лист " + Environment.NewLine + "или проверить наличие"))
                         targetObject.ListVidColorsData.AddListVidColors(targetObject); ;
                 }
                 else if (targetObject._activeCharacter)
@@ -170,11 +169,11 @@ namespace Structure.Model
 
 
 
-                    if (GUILayout.Button("Добавит цвет части персонажа в лист" + System.Environment.NewLine + " или проверить наличие"))
+                    if (GUILayout.Button("Добавит цвет части персонажа в лист" + Environment.NewLine + " или проверить наличие"))
                         targetObject.ListVidColorsData.AddListVidColors(targetObject); ;
                 }
 
-                EditorGUILayout.Space();
+                EditorUtility.SetDirty(targetObject);
                 serializedObject.ApplyModifiedProperties();
             }
         }

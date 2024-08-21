@@ -64,8 +64,7 @@ namespace Structure.Model
                 for (int i = 0; i < targetObject.Structures.Length; i++)
                     EditorGUILayout.DelayedTextField((i + 1) + ": ", targetObject.Structures[i]);
 
-            EditorGUILayout.Space();
-
+            EditorUtility.SetDirty(targetObject);
             serializedObject.ApplyModifiedProperties();
         }
     }

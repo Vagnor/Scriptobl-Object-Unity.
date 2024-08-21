@@ -73,6 +73,7 @@ namespace Structure.Model
                             Debug.Log("Компиляция " + targetObject.name + " прошла успешно!  Присвоен ID: " + targetObject.ID);
                         }
 
+                EditorUtility.SetDirty(targetObject);
                 serializedObject.ApplyModifiedProperties();
             }
         }

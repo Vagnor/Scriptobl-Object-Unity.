@@ -62,8 +62,8 @@ namespace Structure.Model
 
             EditorGUILayout.Space();
 
+            EditorUtility.SetDirty(targetObject);
             serializedObject.ApplyModifiedProperties();
-            base.SaveChanges();
         }
     }
 #endif

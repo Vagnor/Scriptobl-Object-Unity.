@@ -58,8 +58,9 @@ namespace Inventory.Model
                     Repaint();
                 }
                 EditorGUILayout.LabelField("Название", targetObject._nameObject);
-                base.SaveChanges();
-                DrawDefaultInspector();
+
+                EditorUtility.SetDirty(targetObject);
+                serializedObject.ApplyModifiedProperties();
             }
         }
 
