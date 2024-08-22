@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: fcaa4d31a94d3e24ea1cbb9a2076a223
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <VidStructureData>k__BackingField: {fileID: 11400000, guid: f32f8cadc38576241ac675e01c4b6bdf, type: 2}
+  - <ListVidColorsData>k__BackingField: {fileID: 11400000, guid: b1fdde6c7daa0ac4a94df349a39b14f8, type: 2}
+  - <ListPartsCharacterVidData>k__BackingField: {fileID: 11400000, guid: e5edbe290f58ea34a8f628564449eab2, type: 2}
+  - <ListRaceData>k__BackingField: {fileID: 11400000, guid: 79936fff44204b64c84937ab2dd643f8, type: 2}
+  - _itemVid: {instanceID: 0}
+  - _partsCharacterVid: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

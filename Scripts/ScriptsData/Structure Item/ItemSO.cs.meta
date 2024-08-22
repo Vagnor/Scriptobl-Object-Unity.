@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2a122a7e12aa0b84a8c4c75ede88684c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <VidItem>k__BackingField: {instanceID: 0}
+  - <VidStructure>k__BackingField: {fileID: 11400000, guid: f24e448920d7d374b8188c9d133c6340, type: 2}
+  - <Prefab>k__BackingField: {instanceID: 0}
+  - <ItemImage>k__BackingField: {instanceID: 0}
+  - <AnimatorItem>k__BackingField: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

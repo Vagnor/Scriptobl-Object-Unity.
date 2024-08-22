@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: c5dd712f3cb126140853a819898c5994
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - <Vid>k__BackingField: {instanceID: 0}
+  - <VidRaces>k__BackingField: {instanceID: 0}
+  - <SpriteAnimation>k__BackingField: {instanceID: 0}
+  - <Animation>k__BackingField: {instanceID: 0}
+  - <ListRaceData>k__BackingField: {fileID: 11400000, guid: 79936fff44204b64c84937ab2dd643f8, type: 2}
+  - <ListPartsCharacterVidData>k__BackingField: {fileID: 11400000, guid: e5edbe290f58ea34a8f628564449eab2, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
